@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { impactMetrics } from "@/data/portfolio";
 import {
   Server,
@@ -62,9 +63,7 @@ export function Impact() {
                   size={18}
                   className="text-gray-400 group-hover:text-indigo-500 transition-colors mb-3"
                 />
-                <div className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
-                  {metric.value}
-                </div>
+                <AnimatedCounter value={metric.value} />
                 <div className="text-xs text-gray-500 leading-tight">
                   {metric.label}
                 </div>
