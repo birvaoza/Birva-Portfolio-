@@ -3,7 +3,7 @@ export const personalInfo = {
   title: "ML Engineer & DevSecOps Specialist",
   headline: "Building Production ML Systems & Secure Cloud Infrastructure",
   tagline:
-    "M.Tech in Machine Learning, currently working as an Associate Software Engineer at Infor — building automation pipelines, hardening Linux systems, and working with Python, Bash, Chef, Terraform, and Infrastructure as Code to maintain secure production infrastructure.",
+    "Associate Software Engineer at Infor, automating CIS compliance across 200+ Linux servers using Chef and Bash, reducing recurring vulnerabilities by 45% through CI/CD-integrated remediation pipelines. M.Tech in Machine Learning with published IEEE research achieving 0.95 Dice score in medical image segmentation.",
   email: "birvaoza07@gmail.com",
   phone: "+91-9408274556",
   location: "Gandhinagar, Gujarat, India",
