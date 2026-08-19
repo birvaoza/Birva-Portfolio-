@@ -21,13 +21,16 @@ export function Navbar() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        const visibleEntries = entries.filter((e) => e.isIntersecting);
+        if (visibleEntries.length > 0) {
+          // Pick the one closest to top of viewport
+          const sorted = visibleEntries.sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+          );
+          setActiveSection(sorted[0].target.id);
+        }
       },
-      { threshold: 0.3, rootMargin: "-80px 0px -40% 0px" }
+      { threshold: 0.15, rootMargin: "-80px 0px -50% 0px" }
     );
 
     sectionIds.forEach((id) => {
