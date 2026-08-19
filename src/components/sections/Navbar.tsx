@@ -8,11 +8,34 @@ import { navigation, personalInfo } from "@/data/portfolio";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navigation.map((item) => item.href.replace("#", ""));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-80px 0px -40% 0px" }
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -33,15 +56,29 @@ export function Navbar() {
         </a>
 
         <div className="hidden md:flex items-center gap-8">
-          {navigation.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm text-gray-500 hover:text-gray-900 transition-colors duration-200"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navigation.map((item) => {
+            const isActive = activeSection === item.href.replace("#", "");
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`text-sm transition-colors duration-200 relative ${
+                  isActive
+                    ? "text-indigo-600 font-medium"
+                    : "text-gray-500 hover:text-gray-900"
+                }`}
+              >
+                {item.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-indigo-500 rounded-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+              </a>
+            );
+          })}
           <a
             href="#contact"
             className="text-sm px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 transition-colors duration-200"
@@ -68,16 +105,23 @@ export function Navbar() {
             className="md:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
-              {navigation.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navigation.map((item) => {
+                const isActive = activeSection === item.href.replace("#", "");
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`text-sm transition-colors ${
+                      isActive
+                        ? "text-indigo-600 font-medium"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
         )}
