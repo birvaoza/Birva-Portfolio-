@@ -3,21 +3,9 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, FileText, Mail } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
+import { ScrambleText } from "@/components/ui/ScrambleText";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 import Image from "next/image";
-
-const nameLetters = personalInfo.name.split("");
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.05, delayChildren: 0.3 },
-  },
-};
-
-const letterVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
 
 const tagVariants = {
   hidden: { opacity: 0, scale: 0.8, y: 10 },
@@ -109,23 +97,10 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Animated Name - letter by letter */}
-        <motion.h1
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 mb-6"
-        >
-          {nameLetters.map((letter, i) => (
-            <motion.span
-              key={i}
-              variants={letterVariants}
-              className="inline-block"
-            >
-              {letter === " " ? "\u00A0" : letter}
-            </motion.span>
-          ))}
-        </motion.h1>
+        {/* Animated Name - scramble decode effect */}
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-gray-900 mb-6">
+          <ScrambleText text={personalInfo.name} delay={400} />
+        </h1>
 
         {/* Title with gradient animation */}
         <motion.p
@@ -174,31 +149,29 @@ export function Hero() {
           ))}
         </div>
 
-        {/* CTAs with hover animations */}
+        {/* CTAs with magnetic hover */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.5 }}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          <motion.a
+          <MagneticButton
+            as="a"
             href="#projects"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             className="px-6 py-3 bg-indigo-500 text-white font-medium rounded-full hover:bg-indigo-600 transition-colors duration-200 flex items-center gap-2 shadow-lg shadow-indigo-200"
           >
             View Projects
             <ArrowDown size={16} />
-          </motion.a>
-          <motion.a
+          </MagneticButton>
+          <MagneticButton
+            as="a"
             href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
             className="px-6 py-3 border border-gray-200 text-gray-700 font-medium rounded-full hover:border-gray-300 hover:bg-white/50 transition-colors duration-200 flex items-center gap-2"
           >
             <Mail size={16} />
             Contact Me
-          </motion.a>
+          </MagneticButton>
         </motion.div>
 
         {/* Social links with stagger */}

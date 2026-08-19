@@ -12,6 +12,7 @@ import {
   Shield,
   Layers,
 } from "lucide-react";
+import { TiltCard } from "@/components/ui/TiltCard";
 
 const categoryIcons: Record<string, React.ElementType> = {
   "AI/ML": Brain,
@@ -45,12 +46,8 @@ export function Projects() {
               categoryStyles[project.category] || "text-gray-600 bg-gray-50 border-gray-100";
 
             return (
-              <motion.div
+              <TiltCard
                 key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.4 }}
                 className={`border rounded-2xl transition-all duration-300 ${
                   isExpanded
                     ? "border-indigo-200 bg-white shadow-lg shadow-indigo-50"
@@ -159,7 +156,7 @@ export function Projects() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </TiltCard>
             );
           })}
         </div>

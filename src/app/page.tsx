@@ -11,6 +11,8 @@ import { Skills } from "@/components/sections/Skills";
 import { Research } from "@/components/sections/Research";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 const sectionColors = [
   "#ffffff",       // Hero - white
@@ -51,9 +53,11 @@ export default function Home() {
 
   return (
     <div
-      className="transition-colors duration-700 ease-in-out min-h-screen"
+      className="transition-colors duration-700 ease-in-out min-h-screen cursor-none"
       style={{ backgroundColor: bgColor }}
     >
+      <CustomCursor />
+      <ScrollProgress />
       <Navbar />
       <main>
         <div data-section data-section-index="0">

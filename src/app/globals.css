@@ -48,3 +48,10 @@ body {
   50% { background-position: 100% center; }
   100% { background-position: 0% center; }
 }
+
+@media (min-width: 768px) {
+  .cursor-none,
+  .cursor-none * {
+    cursor: none !important;
+  }
+}
