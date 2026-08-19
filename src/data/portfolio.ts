@@ -234,32 +234,6 @@ export const featuredProjects = [
       "Graph representations capture relational information that sequential models miss — especially valuable for document-level reasoning tasks.",
     featured: true,
   },
-  {
-    title: "CIS Level 2 Compliance Automation",
-    subtitle: "Infrastructure Security at Scale",
-    category: "DevSecOps",
-    problem:
-      "200+ production Linux servers lacked consistent CIS Level 2 security hardening, creating compliance gaps.",
-    approach:
-      "Developed automated Chef recipes and Bash scripts that enforced CIS benchmarks across the entire server fleet.",
-    architecture:
-      "Chef recipes → CIS Level 2 controls → Bash automation → Qualys scan integration → GitLab CI/CD pipelines → AWS SSM execution.",
-    technologies: [
-      "Chef",
-      "Bash",
-      "Qualys",
-      "GitLab CI/CD",
-      "AWS SSM",
-      "Linux",
-    ],
-    challenges:
-      "Ensuring idempotent security controls that didn't break running services. Coordinating remediation across different OS versions and configurations.",
-    result:
-      "85% compliance improvement across 200+ production servers. 45% reduction in recurring vulnerabilities. 50% reduction in release effort.",
-    learning:
-      "Security automation requires treating compliance as code — versioned, tested, and deployed through the same CI/CD pipelines as application code.",
-    featured: true,
-  },
 ];
 
 export const impactMetrics = [
@@ -372,7 +346,7 @@ export const education = [
   },
   {
     degree: "Bachelor of Technology in Computer Engineering",
-    institution: "Atmiya University, Rajkot",
+    institution: "Atmiya University, Rajkot, Gujarat, India",
     period: "Jul 2019 – Jul 2023",
     cgpa: "8.49/10.0",
     coursework: [
