@@ -153,16 +153,17 @@ export const featuredProjects = [
     approach:
       "Built a conversational AI system using LLMs with Retrieval-Augmented Generation for clinical report summarization.",
     architecture:
-      "LangChain orchestration → Semantic retrieval via FAISS → Multi-step reasoning with LangGraph → HuggingFace model serving → Accuracy and relevance evaluation pipeline.",
+      "Next.js UI → FastAPI Backend → LangChain orchestration → Semantic retrieval via FAISS → Multi-step reasoning with LangGraph → HuggingFace model serving → Evaluation pipeline.",
     technologies: [
-      "LLMs",
-      "RAG",
+      "Python",
+      "FastAPI",
       "LangChain",
       "LangGraph",
       "HuggingFace",
       "FAISS",
-      "Semantic Search",
+      "Docker",
     ],
+    deployStack: "Next.js → FastAPI → LangChain → FAISS → HuggingFace",
     challenges:
       "Ensuring factual accuracy in generated summaries while maintaining low latency for clinical workflows. Designing multi-step reasoning chains that produced coherent, medically relevant outputs.",
     result:
@@ -170,38 +171,44 @@ export const featuredProjects = [
     learning:
       "Production RAG systems require careful prompt engineering and retrieval tuning to avoid hallucination in high-stakes domains like healthcare.",
     featured: true,
+    demoUrl: "",
+    sourceUrl: "",
   },
   {
     title: "Neuromorphic Retinal Segmentation",
-    subtitle: "Lightweight U-Net on AWS",
+    subtitle: "Lightweight U-Net — Interactive ML Service",
     category: "Computer Vision",
     problem:
       "Standard segmentation architectures like Attention U-Net were computationally expensive for retinal imaging, limiting deployment options.",
     approach:
-      "Designed a lightweight U-Net architecture that maintained segmentation quality while drastically reducing computational requirements.",
+      "Designed a lightweight U-Net architecture that maintained segmentation quality while drastically reducing computational requirements. Deployed as an interactive inference service.",
     architecture:
-      "Custom lightweight U-Net → 40% compute reduction vs Attention U-Net → AWS deployment → Neuromorphic retina dataset processing.",
-    technologies: ["PyTorch", "U-Net", "AWS", "Deep Learning", "Medical Imaging"],
+      "Next.js UI → Upload Image → POST /predict → FastAPI → PyTorch Model → Inference → Segmentation Mask → JSON/Image Response → Visualization.",
+    technologies: ["PyTorch", "FastAPI", "U-Net", "AWS", "Docker", "TensorRT"],
+    deployStack: "Vercel (Frontend) → FastAPI (Backend) → PyTorch (Inference)",
     challenges:
-      "Balancing model size reduction against segmentation accuracy. Achieving competitive Dice scores with significantly fewer parameters.",
+      "Balancing model size reduction against segmentation accuracy. Serving real-time inference with a lightweight model optimized for CPU.",
     result:
       "Dice score of 0.86 with 40% reduced compute compared to Attention U-Net. Published at IEEE APSCON 2025.",
     learning:
       "Architectural efficiency matters more than raw parameter count — structured pruning and skip connection redesign yielded better tradeoffs than naive compression.",
     featured: true,
     publication: "IEEE APSCON 2025",
+    demoUrl: "",
+    sourceUrl: "",
   },
   {
     title: "Production Haze Removal Pipeline",
-    subtitle: "End-to-End Deep Learning",
+    subtitle: "Before/After Visual Demo — Upload & Process",
     category: "Computer Vision",
     problem:
       "Downstream object detection suffered significantly in hazy/foggy conditions, reducing mAP across detection systems.",
     approach:
-      "Developed an end-to-end deep learning pipeline for image dehazing that improved downstream detection performance.",
+      "Developed an end-to-end deep learning pipeline for image dehazing. Interactive demo: upload a hazy image → process → see the enhanced result with a before/after slider.",
     architecture:
-      "Dehazing model → 10K+ image processing → Docker containerization → Automated retraining pipeline → Object detection integration.",
-    technologies: ["Deep Learning", "Docker", "Python", "Object Detection"],
+      "Next.js UI → Image Upload → POST /dehaze → FastAPI → Deep Learning Model → Enhanced Image → Before/After Comparison → Downstream mAP improvement.",
+    technologies: ["Python", "PyTorch", "FastAPI", "Docker", "Deep Learning"],
+    deployStack: "Vercel (Frontend) → FastAPI (Backend) → PyTorch (Model)",
     challenges:
       "Processing 10K+ images efficiently while maintaining model quality. Building automated retraining that kept the model current with new data distributions.",
     result:
@@ -209,30 +216,36 @@ export const featuredProjects = [
     learning:
       "Preprocessing pipelines that improve upstream data quality can have outsized impact on downstream model performance.",
     featured: true,
+    demoUrl: "",
+    sourceUrl: "",
   },
   {
     title: "GNN for Peer Review Analysis",
-    subtitle: "Graph Neural Networks on arXiv",
+    subtitle: "Paste Review → Detect Contradictions",
     category: "AI/ML",
     problem:
       "Detecting contradictions in peer review comments was difficult at scale, leading to inconsistent review quality.",
     approach:
-      "Built a contradiction detection system using graph neural networks trained on large-scale arXiv data.",
+      "Built a contradiction detection system using graph neural networks. Interactive demo: paste a peer review → analyze → see contradiction probability, detected contradictions, and reviewer relationships.",
     architecture:
-      "Graph construction from review data → GNN training on multi-GPU setup → Contradiction classification → Large-scale arXiv dataset processing.",
+      "Next.js UI → Paste Review Text → POST /analyze → FastAPI → GNN Model → Contradiction Classification → Graph Visualization → Confidence Score.",
     technologies: [
-      "GNNs",
       "PyTorch",
+      "FastAPI",
+      "GNNs",
+      "PyTorch Geometric",
       "Multi-GPU",
-      "NLP",
-      "Graph Neural Networks",
+      "Docker",
     ],
+    deployStack: "Vercel (Frontend) → FastAPI (Backend) → PyTorch Geometric (Model)",
     challenges:
       "Modeling complex relationships between review comments as graph structures. Training efficiently on large-scale data with multi-GPU parallelism.",
     result: "Improved classification accuracy by 18% on large-scale arXiv dataset.",
     learning:
       "Graph representations capture relational information that sequential models miss — especially valuable for document-level reasoning tasks.",
     featured: true,
+    demoUrl: "",
+    sourceUrl: "",
   },
 ];
 

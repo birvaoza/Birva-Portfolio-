@@ -11,6 +11,8 @@ import {
   Eye,
   Shield,
   Layers,
+  ExternalLink,
+  Github,
 } from "lucide-react";
 import { TiltCard } from "@/components/ui/TiltCard";
 
@@ -143,6 +145,49 @@ export function Projects() {
                               {tech}
                             </span>
                           ))}
+                        </div>
+
+                        {/* Deploy stack */}
+                        {"deployStack" in project && project.deployStack && (
+                          <div className="mt-4 p-3 bg-gray-50 border border-gray-100 rounded-lg">
+                            <h4 className="text-xs font-mono text-gray-400 uppercase tracking-wider mb-1">
+                              Deploy Architecture
+                            </h4>
+                            <p className="text-xs font-mono text-gray-600">
+                              {project.deployStack}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Action buttons */}
+                        <div className="mt-5 flex flex-wrap gap-3">
+                          {project.demoUrl && (
+                            <a
+                              href={project.demoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-full hover:bg-indigo-600 transition-colors shadow-sm"
+                            >
+                              <ExternalLink size={14} />
+                              Live Demo
+                            </a>
+                          )}
+                          {project.sourceUrl && (
+                            <a
+                              href={project.sourceUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 border border-gray-200 rounded-full hover:border-gray-300 hover:bg-gray-50 transition-colors"
+                            >
+                              <Github size={14} />
+                              Source Code
+                            </a>
+                          )}
+                          {!project.demoUrl && !project.sourceUrl && (
+                            <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono text-gray-400 border border-dashed border-gray-200 rounded-full">
+                              🚧 Demo coming soon
+                            </span>
+                          )}
                         </div>
 
                         {"publication" in project && project.publication && (
