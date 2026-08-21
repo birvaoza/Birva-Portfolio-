@@ -159,7 +159,8 @@ export function Projects() {
                           </div>
                         )}
 
-                        {/* Action buttons */}
+                        {/* Action buttons - shown only when links are available */}
+                        {(project.demoUrl || project.sourceUrl) && (
                         <div className="mt-5 flex flex-wrap gap-3">
                           {project.demoUrl && (
                             <a
@@ -183,12 +184,8 @@ export function Projects() {
                               Source Code
                             </a>
                           )}
-                          {!project.demoUrl && !project.sourceUrl && (
-                            <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-mono text-gray-400 border border-dashed border-gray-200 rounded-full">
-                              🚧 Demo coming soon
-                            </span>
-                          )}
                         </div>
+                        )}
 
                         {"publication" in project && project.publication && (
                           <div className="mt-4">
